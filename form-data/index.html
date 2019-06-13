@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+<!-- adding responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2F3BA2" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Functional Form">
+  <link rel="stylesheet" type="text/css" href="/styles/formstylesheet.css">
+    <title>functional-form-PWA</title>
+  </head>
+  <body>
+    <header>
+      <h1><strong> Basic Info Form</strong></h1>
+    </header>
+  <form class="myform" action="#" method="post">
+    <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="user_name">
+  </div>
+  <div>
+  <label for="DOB">Date Of Birth:</label>
+  <input type="date" id="DOB" name="user_DOB" min="1950-01-01" max="2019-12-31">
+</div>
+<div>
+<label for="address">Mailing Address:</label>
+<input type="text" class="address" name="user_address">
+</div>
+<div>
+<label for="email">Email Address:</label>
+<input type="email" id="email" name="user_email">
+</div>
+<div class ="button">
+  <button type ="submit">submit data</button>
+  <button type = "reset">reset all data</button>
+</div>
+  </form>
+  </body>
+</html>
