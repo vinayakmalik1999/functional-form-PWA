@@ -1,11 +1,11 @@
 'use strict'
 
-//Add cache names here
-const CACHE_NAME = 'static-res-cache-v1';
+//Add cache names here NOTE: update whenver we make changes to the cached files
+const CACHE_NAME = 'static-cache-v2';
 
 //Add files to cache here(static files for now)
 const FILES_TO_CACHE = [
-  '/',
+
   //HTML files
   '/index.html',
   '/list-page.html',
@@ -26,14 +26,19 @@ self.addEventListener('install', (evt) => {
   //Precache static resources here.
   evt.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('[ServiceWorker] Pre-caching offline page');
+      console.log('[ServiceWorker] Precaching offline resources');
       return cache.addAll(FILES_TO_CACHE);
-    });
+    })
+    .catch((err) => {
+      return console.log("error1");
+    }));
+
     console.log("[ServiceWorker] Files cached succesfully")
-  );
+
   self.skipWaiting();
 });
 
+//starting the activate event(MIGRATION and deleting old files)
 self.addEventListener('activate', (evt) => {
   console.log('[ServiceWorker] Activate event started');
   //  Remove previous cached data from disk.
@@ -50,5 +55,26 @@ self.addEventListener('activate', (evt) => {
       }));
     })
   );
+  //its our SW and our clients, claim all uncontrolled clients with this
   self.clients.claim();
+});
+//fetch event goes here
+self.addEventListener('fetch',(evt) =>{
+  console.log('[ServiceWorker] Fetch event started')
+    //fetch strategy (serving Strategy: Cache, falling back to network)
+  evt.respondWith(
+    caches.open(CACHE_NAME).then((cache) =>{
+    return cache.match(evt.request)
+    .then((response) => {
+      return response || fetch(evt.request);
+    });
+
+
+
+})
+    .catch((err) =>{
+      return console.log('ERROR 2:')
+    })
+);
+
 });
