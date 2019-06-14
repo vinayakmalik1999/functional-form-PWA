@@ -73,7 +73,7 @@ self.addEventListener('fetch',(evt) =>{
 
 })
     .catch((err) =>{
-      return console.log('ERROR 2:')
+      return console.log('ERROR: unable to fetch resources from network, activating offline mode')
     })
 );
 
