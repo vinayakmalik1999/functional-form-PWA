@@ -11,6 +11,7 @@ const FILES_TO_CACHE = [
   '/list-page.html',
   //CSS files
   '/styles/formstylesheet.css',
+  '/styles/liststylesheet.css',
   //JS files
   '/scripts/main.js',
   //images
@@ -34,11 +35,11 @@ self.addEventListener('install', (evt) => {
     }));
 
     console.log("[ServiceWorker] Files cached succesfully")
-
+//skiiping the wait to update new service worker
   self.skipWaiting();
 });
 
-//starting the activate event(MIGRATION and deleting old files)
+//starting the activate event(using for MIGRATION and deleting old files)
 self.addEventListener('activate', (evt) => {
   console.log('[ServiceWorker] Activate event started');
   //  Remove previous cached data from disk.
@@ -66,6 +67,7 @@ self.addEventListener('fetch',(evt) =>{
     caches.open(CACHE_NAME).then((cache) =>{
     return cache.match(evt.request)
     .then((response) => {
+      //return cached response first, whenever network is on automatically fetches from the network
       return response || fetch(evt.request);
     });
 
