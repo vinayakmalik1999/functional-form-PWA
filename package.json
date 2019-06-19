@@ -1,0 +1,22 @@
+{
+  "name": "functional-form-pwa",
+  "version": "1.0.0",
+  "description": "creating a employee info form with server side editing and viewing functionalities and then converting it to a PWA",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinayakmalik1999/functional-form-PWA.git"
+  },
+  "author": "Vinayak Malik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vinayakmalik1999/functional-form-PWA/issues"
+  },
+  "homepage": "https://github.com/vinayakmalik1999/functional-form-PWA#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
