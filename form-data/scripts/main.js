@@ -1,13 +1,14 @@
 $.getJSON("https://kt-dev.outsystemscloud.com/PWABack/rest/EmployeeList/Get", function(data){
 
-// function to create a new card
-document.body.onload = cardsToCreate();
 
+document.body.onload = cardsToCreate();
+// function to create a new card
 function createNewCard(i) {
 
-$("<div class = column> <div class= card> <div class= container> <h2> "+ data[i].Name + "</h2> <p class= title>"+ data[i].Id +"</p> <p> (+1)" + data[i].PhoneNumber +"</p> <p>"+ data[i].Email+ " </p>  <p><button class = button onClick = editDetails("+ data[i].Id +") >Edit Details</button></p> </div>  </div></div>" ).insertAfter(".row")
+$("<div class = column> <div class= card> <div class= container> <h2> "+ data[i].Name + "</h2> <p class= title>"+ data[i].Id +"</p> <p> (+1)" + data[i].PhoneNumber +"</p> <p>"+ data[i].Email+ " </p>  <p><button class = button onClick = editDetails("+ data[i].Id +") action = /index.html >Edit Details</button></p> </div>  </div></div>" ).insertAfter(".row")
 
 }
+
 //function for number of cards to create
 function cardsToCreate(){
   var length = data.length;
@@ -15,6 +16,7 @@ function cardsToCreate(){
       createNewCard(i);
   }
 }
+
 });
 //function to post form data to API
 document.getElementById('myform').addEventListener("submit",postData);
@@ -66,6 +68,14 @@ function nameSeperate(name){
 
 }
 //function to edit employee details using POST method
-function editDetails(event){
-    alert(event);
+function editDetails(index){
+
+
+  console.log("index");
+
+
+setTimeout(function(){window.location.href = "index.html"},1000);
+setTimeout(function(){document.getElementById('Name').value = "something"},1000);
+
+
 }

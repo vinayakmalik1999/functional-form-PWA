@@ -1,15 +1,20 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const path = require('path');
+const router = express.Router();
 
-app.get('/', (req, res) => res.send('Welcome To Code Handbook!'))
+
 /*
 * Route to render HTML Page
 */
-app.get('/', (req, res) => {
-    res.sendFile('index.html', {
-        root: path.join(__dirname, './')
-    })
-})
+router.get('/',function(req,res){
+  res.sendFile(path.join(__dirname+'/form-data/index.html'));
+  //__dirname : It will resolve to your project folder.
+});
 
-app.listen(port, () => console.log(`App listening on port ${port}!`))
+
+app.use(express.static('form-data'));
+
+app.use('/', router);
+app.listen(process.env.port || 3000);
+console.log('Running at Port 3000');
