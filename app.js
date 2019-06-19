@@ -8,7 +8,7 @@ const router = express.Router();
 * Route to render HTML Page
 */
 router.get('/',function(req,res){
-  res.sendFile(path.join(__dirname+'/form-data/index.html'));
+  res.sendFile(path.join(__dirname+'/form-data/form.html'));
   //__dirname : It will resolve to your project folder.
 });
 

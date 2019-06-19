@@ -1,19 +1,20 @@
 'use strict'
 
 //Add cache names here NOTE: update whenver we make changes to the cached files
-const CACHE_NAME = 'static-cache-v3';
+const CACHE_NAME = 'static-cache-v4';
 
 //Add files to cache here(static files for now)
 const FILES_TO_CACHE = [
 
   //HTML files
-  '/index.html',
-  '/list-page.html',
+  '/details.html',
+  '/form.html',
   //CSS files
   '/styles/formstylesheet.css',
   '/styles/liststylesheet.css',
   //JS files
-  '/scripts/main.js',
+  '/scripts/form.js',
+  '/scripts/details.js',
   //images
   '/images/icon-64x64.png',
   '/images/icon-256x256.png',
