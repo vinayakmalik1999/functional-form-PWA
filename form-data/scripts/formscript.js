@@ -48,3 +48,9 @@ function nameSeperate(name){
   return (newName);
 
 }
+/*var myindex = sessionStorage.getItem('index')
+  alert(myindex);
+  if (typeof myindex !== "undefined" || typeof myindex == null) {
+    alert("something is undefined");
+    sessionStorage.removeItem('index')
+}*/

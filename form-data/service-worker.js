@@ -13,7 +13,7 @@ const FILES_TO_CACHE = [
   '/styles/formstylesheet.css',
   '/styles/liststylesheet.css',
   //JS files
-  '/scripts/form.js',
+  '/scripts/formscript.js',
   '/scripts/details.js',
   //images
   '/images/icon-64x64.png',

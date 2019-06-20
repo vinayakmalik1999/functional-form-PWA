@@ -20,13 +20,10 @@ function cardsToCreate(){
 });
 //function to edit employee details using POST method
 function editDetails(index){
+//sessionStorage.setItem ('index', index);
 
 
-  console.log("index");
-
-
-setTimeout(function(){window.location.href = "index.html"},1000);
-setTimeout(function(){document.getElementById('Name').value = "something"},1000);
-
+window.location.href = ("form/" + index);
+document.getElementById('Name').innerHTML = "works";
 
 }
