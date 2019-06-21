@@ -10,8 +10,8 @@ function postData(event){
   let LastName = name.lastName;
   let Email = document.getElementById('Email').value;
   let PhoneNumber = document.getElementById('Number').value;
-
-
+  let JobTitle = document.getElementById('JobTitle').value
+  let Address = document.getElementById('Address').value
 
     fetch('https://kt-dev.outsystemscloud.com/PWABack/rest/EmployeeDetail/Create',{
           method:'POST',
@@ -23,10 +23,10 @@ function postData(event){
           body:JSON.stringify({
             FirstName:FirstName,
             LastName:LastName,
-            JobTitle:"Employee",
+            JobTitle:JobTitle,
             Email:Email,
             PhoneNumber:PhoneNumber,
-            Address:"Undefined"
+            Address:Address
           })
   }).then((res) => res.json())
     .then((data) => console.log(data))
