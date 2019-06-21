@@ -11,26 +11,33 @@ app.set('view engine', 'pug')
 //function to get ID from URL passed
 
 //using axios to get data from URL
-axios({
-  method: 'get',
-  url: requestURL,
-  headers: {
-    EmployeeId: '1'
-  }})
-.then((res) => {
-  console.log(res.data);
-});
+
 /*
 * Route to render HTML Page
 */
 app.get('/',function(req,res){
-  res.sendFile(path.join(__dirname+'/form-data/form.html'));
+  res.redirect('/form.html')
   //__dirname : It will resolve to  project folder.
 });
 //edit details routing
-app.get('/form/*',function (req,res){
-  
-  res.render('index', {title: 'Hey'},);
+app.get('/form/:eId',function (req,res){
+
+ var newId = (req.params.eId)
+
+
+  axios({
+   method: 'get',
+   url: requestURL,
+   headers: {
+     EmployeeId: newId
+   }})
+ .then((result) => {
+   res.render('index',{Id:result.data.Id, Name:result.data.FirstName + " " + result.data.LastName,Email:result.data.Email,Number:result.data.PhoneNumber,Jobtitle:result.data.JobTitle,Address:result.data.Address} , (error,html) =>{res.send(html);});
+ })
+ .catch((res) => {
+ console.log(res);
+
+ })
 
 });
 
