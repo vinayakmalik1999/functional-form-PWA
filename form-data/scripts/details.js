@@ -24,6 +24,5 @@ function editDetails(index){
 
 
 window.location.href = ("form/" + index);
-document.getElementById('Name').innerHTML = "works";
 
 }
