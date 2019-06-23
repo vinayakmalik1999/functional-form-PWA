@@ -5,6 +5,14 @@ navigator.serviceWorker.register('/service-worker.js')
     .then((reg) => {
       //Service Worker registered successfully
       console.log('Service worker registered.', reg);
+      //REGISTERING BACKGROUND SYNC
+      return reg.sync.register('formDataSync').then(() =>{
+        console.log("sync registered")
+      })
+      .catch(() =>{
+        //sync failed
+        console.log("sync error")
+      })
     }, function(err){
       //Registration failed
        console.log('ServiceWorker registration failed: ', err);

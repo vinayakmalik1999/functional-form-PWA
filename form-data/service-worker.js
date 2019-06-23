@@ -97,11 +97,10 @@ self.addEventListener('message', function (event) {
   }
   else{console.log('nothing')}
 })
-
+//serving stratergy: cache falling back to network with if-else block to catch post requests on offline
 self.addEventListener('fetch', function(event) {
-  // every request from our site, passes through the fetch handler
-  // I have proof
-  console.log('I am a request with url: ',
+//great way too see error on which request
+  console.log('fetching request with url: ',
    event.request.clone().url)
   if (event.request.clone().method === 'GET') {
     event.respondWith(
@@ -114,7 +113,7 @@ self.addEventListener('fetch', function(event) {
             //return the response stored in browser
             return response;
           }
-          // no match in cache, use the network instead
+          // use the network instead
           return fetch(event.request.clone());
         }
       )
@@ -148,6 +147,17 @@ function savePostRequests (url, payload) {
     console.error(error)
   }
 }
+self.addEventListener('sync', function (event) {
+  console.log('[ServiceWorker]ONLINE sync event started')
+    //tag for sync
+  if (event.tag === 'formDataSync') {
+  //send data to server
+    event.waitUntil(
+
+      sendPostToServer()
+      )
+  }
+})
 
 /*//fetch event goes here
 self.addEventListener('fetch',(evt) =>{
