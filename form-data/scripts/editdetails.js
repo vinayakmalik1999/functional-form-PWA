@@ -1,17 +1,3 @@
-// Register service worker.
-if ('serviceWorker' in navigator) {
-window.addEventListener('load', () => {
-navigator.serviceWorker.register('/service-worker.js')
-    .then((reg) => {
-      //Service Worker registered successfully
-      console.log('Service worker registered.', reg);
-    }, function(err){
-      //Registration failed
-       console.log('ServiceWorker registration failed: ', err);
-    }
-  );
-});
-}
 //function to post form data to API
 document.getElementById('myform').addEventListener("submit",postData);
 function postData(event){
@@ -23,20 +9,11 @@ function postData(event){
   let LastName = name.lastName;
   let Email = document.getElementById('Email').value;
   let PhoneNumber = document.getElementById('Number').value;
-  let JobTitle = document.getElementById('JobTitle').value
-  let Address = document.getElementById('Address').value
-  var data = {
-    FirstName:FirstName,
-    LastName:LastName,
-    JobTitle:JobTitle,
-    Email:Email,
-    PhoneNumber:PhoneNumber,
-    Address:Address
-  }
-var msg = {
-  'form_data': data
-}
-navigator.serviceWorker.controller.postMessage(msg)
+  let JobTitle = document.getElementById('JobTitle').value;
+  let Address = document.getElementById('Address').value;
+  let Id = document.getElementById('ID').value;
+  // send message to service worker via postMessage
+
 
     fetch('https://kt-dev.outsystemscloud.com/PWABack/rest/EmployeeDetail/Create',{
           method:'POST',
@@ -46,6 +23,7 @@ navigator.serviceWorker.controller.postMessage(msg)
           },
 
           body:JSON.stringify({
+            Id:Id,
             FirstName:FirstName,
             LastName:LastName,
             JobTitle:JobTitle,
@@ -73,9 +51,3 @@ function nameSeperate(name){
   return (newName);
 
 }
-/*var myindex = sessionStorage.getItem('index')
-  alert(myindex);
-  if (typeof myindex !== "undefined" || typeof myindex == null) {
-    alert("something is undefined");
-    sessionStorage.removeItem('index')
-}*/

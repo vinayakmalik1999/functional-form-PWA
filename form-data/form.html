@@ -19,7 +19,7 @@
       <h1><strong>Employee Details Form</strong></h1>
     </header>
 
-  <form id = "myform" class="myform" action="/list-page.html" >
+  <form id = "myform" class="myform" action="" >
     <div hidden>
     <label for="ID">ID Number:</label>
     <input type="text" id = "ID" class="ID" name="ID">
@@ -51,22 +51,6 @@
   </form>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="/scripts/formscript.js"></script>
-    <script>
-    // Register service worker.
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js')
-        .then((reg) => {
-          //Service Worker registered successfully
-          console.log('Service worker registered.', reg);
-        }, function(err){
-          //Registration failed
-           console.log('ServiceWorker registration failed: ', err);
-        }
-      );
-  });
-}
-    </script>
     <div id = 'credit'>Icons made by <a href="https://www.flaticon.com/authors/eucalyp" title="Eucalyp">Eucalyp</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
 
   </body>
