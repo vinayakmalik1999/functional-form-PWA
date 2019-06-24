@@ -61,7 +61,7 @@ function openDatabase () {
   }
   indexedDBOpenRequest.onerror = function (error) {
     // error creating IndexedDB
-    console.error('IndexedDB error:', error)
+    console.error('IndexedDB creation error:', error)
   }
 }
 
@@ -154,7 +154,7 @@ self.addEventListener('sync', function (event) {
   //send data to server
     event.waitUntil(
 
-      sendPostToServer()
+      sendDataToServer()
       )
   }
 })
