@@ -104,12 +104,10 @@ self.addEventListener('fetch', function(event) {
    event.request.clone().url)
   if (event.request.clone().method === 'GET') {
     event.respondWith(
-      // check all the caches in the browser and find
-      // out whether our request is in any of them
+    //check too see if our request is present
       caches.match(event.request.clone())
         .then(function(response) {
           if (response) {
-            // if we are here, that means there's a match
             //return the response stored in browser
             return response;
           }
@@ -178,7 +176,6 @@ function sendDataToServer () {
        var payload = JSON.stringify(savedRequest.payload)
        var method = savedRequest.method
        var headers = {
-
          'Content-Type': 'application/json'
        }
        fetch(requestUrl, {
