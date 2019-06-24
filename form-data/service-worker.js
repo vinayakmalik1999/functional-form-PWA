@@ -178,9 +178,9 @@ function sendDataToServer () {
        var payload = JSON.stringify(savedRequest.payload)
        var method = savedRequest.method
        var headers = {
-         'Accept': 'application/json',
+
          'Content-Type': 'application/json'
-       } // if you have any other headers put them here
+       }
        fetch(requestUrl, {
          headers: headers,
          method: method,
@@ -191,7 +191,7 @@ function sendDataToServer () {
           // If sending the POST request was successful, then
           // remove it from the IndexedDB.
           getObjectStore(FOLDER_NAME,
-             'readwrite').delete(savedRequest.id)
+             'readwrite').clear()
          }
       }).catch(function (error) {
          // This will be triggered if the network is still down.
