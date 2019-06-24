@@ -158,7 +158,55 @@ self.addEventListener('sync', function (event) {
       )
   }
 })
-
+function sendDataToServer () {
+  var savedRequests = []
+  getObjectStore(FOLDER_NAME).openCursor().onsuccess = async function (event) {
+    var cursor = event.target.result
+    console.log("cursor",cursor)
+   if (cursor) {
+    // Keep moving the cursor forward and collecting saved
+    // requests.
+    savedRequests.push(cursor.value)
+      cursor.continue()
+   } else {
+     // At this point, we have collected all the post requests in
+     // indexedb.
+     for (let savedRequest of savedRequests) {
+       // send them to the server one after the other
+       console.log('saved request', savedRequest)
+       var requestUrl = savedRequest.url
+       var payload = JSON.stringify(savedRequest.payload)
+       var method = savedRequest.method
+       var headers = {
+         'Accept': 'application/json',
+         'Content-Type': 'application/json'
+       } // if you have any other headers put them here
+       fetch(requestUrl, {
+         headers: headers,
+         method: method,
+         body: payload
+       }).then(function (response) {
+         console.log('server response', response)
+         if (response.status < 400) {
+          // If sending the POST request was successful, then
+          // remove it from the IndexedDB.
+          getObjectStore(FOLDER_NAME,
+             'readwrite').delete(savedRequest.id)
+         }
+      }).catch(function (error) {
+         // This will be triggered if the network is still down.
+        // The request will be replayed again
+       // the next time the service worker starts up.
+       console.error('Send to Server failed:', error)
+        // since we are in a catch, it is important an error is
+        //thrown,so the background sync knows to keep retrying
+        // the send to server
+        throw error
+      })
+     }
+    }
+  }
+}
 /*//fetch event goes here
 self.addEventListener('fetch',(evt) =>{
   console.log('[ServiceWorker] Fetch event started')
