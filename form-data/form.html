@@ -18,7 +18,9 @@
     <header>
       <h1><strong>Employee Details Form</strong></h1>
     </header>
-
+    <div id="offline-notification" >
+      It looks like you're offline, don't worry you can still add details.
+    </div>
   <form id = "myform" class="myform" action="" >
     <div hidden>
     <label for="ID">ID Number:</label>
@@ -55,6 +57,10 @@
     <script src="/scripts/formscript.js"></script>
     <script> function back(){
       window.location.href = "/details.html"
+    }
+    document.getElementById("offline-notification").style.display = "none";
+    if(!navigator.onLine){
+      document.getElementById("offline-notification").style.display = "block";
     }
     </script>
     <button onClick = "back()" value="back to list" >back to list</button>
