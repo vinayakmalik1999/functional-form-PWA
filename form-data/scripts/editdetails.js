@@ -32,7 +32,9 @@ function postData(event){
             Address:Address
           })
   }).then((res) => res.json())
-    .then((data) => console.log(data))
+    .then((data) => {console.log(data)
+      window.location.href  = ("/details.html")
+    })
     .catch((err) => console.log(err))
 }
 //seperating firstname and last name returns object with first name and last name

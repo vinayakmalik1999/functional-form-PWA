@@ -1,4 +1,5 @@
 let my_db
+document.getElementById("offline-notification").style.display = "none";
 
 openDatabase();
 
@@ -21,14 +22,13 @@ var cursor
       getObjectStore('get_requests').openCursor().onsuccess = async function (event) {
          cursor = event.target.result
         console.log("cursor",cursor)
-
+        document.getElementById("offline-notification").style.display = "block";
 
         for(l in cursor.value){
 
         $("<div class = column> <div class= card> <div class= container> <h2> "+ cursor.value[l].Name + "</h2> <p class= title>"+ cursor.value[l].Id +"</p> <p> (+1)" + cursor.value[l].PhoneNumber +"</p> <p>"+ cursor.value[l].Email+ " </p>  <p><button class = button action = /index.html disabled>Edit Details</button></p> </div>  </div></div>" ).insertAfter(".row")
         }
-        getObjectStore('get_requests',
-           'readwrite').clear()
+      
 
         }
   }

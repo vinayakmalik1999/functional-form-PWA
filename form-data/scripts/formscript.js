@@ -62,8 +62,12 @@ navigator.serviceWorker.controller.postMessage(msg)
             Address:Address
           })
   }).then((res) => res.json())
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err))
+    .then((data) => {console.log(data)
+      window.location.href  = ("/details.html")
+    })
+    .catch((err) => {console.log(err)
+      window.location.href  = ("/details.html")
+    })
 }
 //seperating firstname and last name returns object with first name and last name
 function nameSeperate(name){
