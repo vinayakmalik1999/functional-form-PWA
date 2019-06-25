@@ -1,0 +1,45 @@
+doctype html
+html(lang='en-US')
+	head
+		meta(charset='utf-8')
+		// adding responsive
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		meta(name='Description', content='new employee add page')
+		meta(name='theme-color', content='#2F3BA2')
+		meta(name='apple-mobile-web-app-capable', content='yes')
+		meta(name='apple-mobile-web-app-status-bar-style', content='black')
+		meta(name='apple-mobile-web-app-title', content='Functional Form')
+		link(rel='manifest', href='/manifest.json')
+		link(rel='stylesheet', type='text/css', href='/styles/formstylesheet.css')
+		title functional-form-PWA
+	body
+		header
+			h1
+				strong Edit Employee Details Form
+		form#myform.myform(action='/list-page.html')
+			div()
+				label(for='ID') ID Number:
+				input#ID.ID(type='number', name='ID', value=Id, disabled)
+			div
+				label(for='Name') Name:
+				input#Name(type='text', name='Name', value=Name)
+			div
+				label(for='Email') Email Address:
+				input#Email(type='email', name='Email', value=Email)
+			div
+				label(for='Phone-Number') Phone Number (+1):
+				input#Number(type='Number', name='Number', min='0000000000', max='9999999999',value=Number)
+			div
+				label(for='JobTitle') Job Title:
+				input#JobTitle(type='text', name='JobTitle', value=Jobtitle)
+			div
+				label(for='Address') Address:
+				input#Address(type='text', name='Address', value=Address)
+			.button
+				button(type='submit') submit data
+				button(type='reset') reset all data
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js')
+		script(src='/scripts/editdetails.js')
+
+			</body>
+			</html>
