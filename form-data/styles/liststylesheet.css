@@ -69,3 +69,14 @@ html {
 .my-float{
 	margin-top:100px;
 }
+.offline-notification {
+  transition: transform 0.3s;
+  transform: translateY(-100%) translateX(-50%);
+  position: fixed;
+  left: 50%;
+  background: #222;
+  color: white;
+  padding: 0.5em;
+  text-align: center;
+
+}
