@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/vinayakmalik1999/functional-form-PWA#readme",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "client-sessions": "^0.8.0",
     "express": "^4.17.1",
     "express-http-to-https": "^1.1.4",
